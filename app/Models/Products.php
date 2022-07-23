@@ -8,4 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Products extends Model
 {
     use HasFactory;
+
+    protected $table = 'products';
+    public function getPrice($value = '') {
+        if($this->price != '') {
+            return format_price($this->price,$value);
+        }else{
+            return 'Liên hệ';
+        }
+    }
+    public function format_price($price) {
+        if ($price == 0) {
+            return "Liên hệ";
+        }else{
+            return number_format($price, '.', '.').' VND';
+        }
+    }
+
 }

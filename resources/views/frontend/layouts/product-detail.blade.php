@@ -1,4 +1,4 @@
-@extends('frontend.layouts.master')
+@extends('frontend.layouts-master.master')
 @section('title','product-detail page')
 @section('description')
 
@@ -258,7 +258,7 @@
                     <span class="ribbon new">New</span>
                     <figure>
                         <a href="product-detail-1.html">
-                            <img class="owl-lazy" src="img/products/product_placeholder_square_medium.jpg" data-src="img/products/shoes/4.jpg" alt="">
+                            <img class="owl-lazy" src="{{url('frontend')}}/img/products/product_placeholder_square_medium.jpg" data-src="{{url('frontend')}}/img/products/shoes/4.jpg" alt="">
                         </a>
                     </figure>
                     <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
@@ -282,7 +282,7 @@
                     <span class="ribbon new">New</span>
                     <figure>
                         <a href="product-detail-1.html">
-                            <img class="owl-lazy" src="img/products/product_placeholder_square_medium.jpg" data-src="img/products/shoes/5.jpg" alt="">
+                            <img class="owl-lazy" src="{{url('frontend')}}/img/products/product_placeholder_square_medium.jpg" data-src="{{url('frontend')}}/img/products/shoes/5.jpg" alt="">
                         </a>
                     </figure>
                     <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
@@ -306,7 +306,7 @@
                     <span class="ribbon hot">Hot</span>
                     <figure>
                         <a href="product-detail-1.html">
-                            <img class="owl-lazy" src="img/products/product_placeholder_square_medium.jpg" data-src="img/products/shoes/8.jpg" alt="">
+                            <img class="owl-lazy" src="{{url('frontend')}}/img/products/product_placeholder_square_medium.jpg" data-src="{{url('frontend')}}/img/products/shoes/8.jpg" alt="">
                         </a>
                     </figure>
                     <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
@@ -330,7 +330,7 @@
                     <span class="ribbon off">-30%</span>
                     <figure>
                         <a href="product-detail-1.html">
-                            <img class="owl-lazy" src="img/products/product_placeholder_square_medium.jpg" data-src="img/products/shoes/2.jpg" alt="">
+                            <img class="owl-lazy" src="{{url('frontend')}}/img/products/product_placeholder_square_medium.jpg" data-src="{{url('frontend')}}/img/products/shoes/2.jpg" alt="">
                         </a>
                     </figure>
                     <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
@@ -355,7 +355,7 @@
                     <span class="ribbon off">-50%</span>
                     <figure>
                         <a href="product-detail-1.html">
-                            <img class="owl-lazy" src="img/products/product_placeholder_square_medium.jpg" data-src="img/products/shoes/3.jpg" alt="">
+                            <img class="owl-lazy" src="{{url('frontend')}}/img/products/product_placeholder_square_medium.jpg" data-src="{{url('frontend')}}/img/products/shoes/3.jpg" alt="">
                         </a>
                     </figure>
                     <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>

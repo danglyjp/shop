@@ -1,4 +1,9 @@
-@extends('frontend.layouts.master')
+@extends('frontend.layouts-master.master')
+
+@section('head')
+<link href="{{url('frontend')}}/css/blog.css" rel="stylesheet">
+@endsection
+
 @section('title','home page')
 @section('description')
 

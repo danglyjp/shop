@@ -1,4 +1,4 @@
-@extends('frontend.layouts.master')
+@extends('frontend.layouts-master.master')
 @section('title','home page')
 @section('description')
 

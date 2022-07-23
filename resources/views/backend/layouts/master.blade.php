@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Dashboard</title>
+  <title>@yield('title') | SHOP</title>
   <!-- Tell the browser to be responsive to screen width -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="{{asset('backend')}}/bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="{{url('backend')}}/bower_components/bootstrap-daterangepicker/daterangepicker.css">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="{{url('backend')}}/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  @yield('head')
   
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -45,7 +47,10 @@
   <!-- Left side column. contains the logo and sidebar -->
   @include('backend.layouts.sidebar')
   <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper" style="min-height: 926.281px;">
+  @include('backend.layouts.header-breadcrumb')
   @yield('main')
+  </div>
   <!-- /.content-wrapper -->
   @include('backend.layouts.footer')
 
@@ -282,5 +287,18 @@
 <script src="{{url('backend')}}/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{url('backend')}}/dist/js/demo.js"></script>
+<script src="{{url('backend')}}/js/notify.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="//cdn.ckeditor.com/4.19.0/full/ckeditor.js"></script>
+@yield('js')
+<script type="text/javascript">
+
+  $.ajaxSetup({
+      headers: {
+          'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+      }
+  })
+</script>
 </body>
 </html>
