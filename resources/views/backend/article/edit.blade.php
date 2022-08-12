@@ -2,20 +2,6 @@
 
 @section('title','CHỈNH SỬA BÀI VIẾT')
 @section('main')
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <h1>
-            <i class="fa fa-fw fa-edit"></i>
-            CHỈNH SỬA BÀI VIẾT
-            <small>Preview</small>
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="{{asset('/admin')}}"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
-            <li><a href="{{route('admin.article.index')}}"><i class="fa fa-dashboard"></i> Quản lý bài viết</a></li>
-            <li class="active">Chỉnh Sửa bài viết</li>
-        </ol>
-    </section>
-
     <!-- Main content -->
     <section class="content">
         <div class="row">

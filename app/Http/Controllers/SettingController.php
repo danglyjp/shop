@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Settings;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class SettingController extends Controller
@@ -14,7 +14,7 @@ class SettingController extends Controller
      */
     public function index()
     {
-        $model = Settings::first();
+        $model = Setting::first();
 
         return view('backend.setting.index', ['model' => $model]);
     }
@@ -37,7 +37,7 @@ class SettingController extends Controller
      */
     public function store(Request $request)
     {
-        $model = Settings::first();
+        $model = Setting::first();
 
         $model->company = $request->input('company');
         if($request->hasFile('image')) { // Kiem tra xem co image duoc chon khong

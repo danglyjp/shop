@@ -2,19 +2,6 @@
 
 @section('title','QUẢN LÝ BÀI VIẾT')
 @section('main')
-<!-- Content Header (Page header) -->
-    <section class="content-header">
-        <h1>
-            QUẢN LÝ BÀI VIẾT
-            <small>Preview</small>
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="{{asset('/admin')}}"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
-            <li class="active">Quản lý bài viết</li>
-        </ol>
-    </section>
-    <!-- end Content Header (Page header) -->
-
     <!-- Main content -->
     <section class="content">
         <div class="row">
@@ -54,7 +41,7 @@
                                     <td>{{ $item->title }}</td>
 
                                     <td>
-                                        {{ !empty($item->Article_Category->name) ? $item->Article_Category->name : '' }}
+                                        {{ !empty($item->category->name) ? $item->category->name : 'none' }}
                                     </td>
 
                                     <td>

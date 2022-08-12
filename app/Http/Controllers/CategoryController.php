@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Product;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class CategoryController extends Controller
@@ -13,16 +15,31 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $params = $request->all();
+        $filter_type = $params['filter_type'] ?? 2;
+
         //Cách 1: Lấy toàn bộ dữ liệu
         //$data = Category::all(); // SELECT * FROM Categorys
 
+        // if check admin
+        if (Auth::user()->role_id == 1) {
+            if ($filter_type == 1) {
+                $data = Category::withTrashed()->latest()->paginate(10);
+            } elseif ($filter_type == 2) {
+                $data = Category::latest()->paginate(10);
+            } else {
+                $data = Category::onlyTrashed()->latest()->paginate(10);
+            }
+
+        } else {
+            $data = Category::latest()->paginate(10);
+        }
+
         //Cách 2: Lấy dữ liệu mới nhất và phân trang - mỗi trang 10 bản ghi
-        $data = Category::latest()->paginate(10);
 
-
-        return view('backend.category.index', ['data' => $data]);
+        return view('backend.category.index', ['data' => $data, 'filter_type' => $filter_type]);
     }
 
     /**
@@ -200,6 +217,19 @@ class CategoryController extends Controller
         return response()->json([
             'status' => true,
             'msg' => 'Xóa thành công'
+        ]);
+    }
+
+
+    // Khôi phục
+    public function restore($id)
+    {
+        $Category = Category::onlyTrashed()->findOrFail($id);
+        $Category->restore();
+
+        return response()->json([
+            'status' => true,
+            'msg' => 'Khôi phục thành công'
         ]);
     }
 }

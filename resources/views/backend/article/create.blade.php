@@ -2,19 +2,6 @@
 
 @section('title','THÊM MỚI BÀI VIẾT')
 @section('main')
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <h1>
-            THÊM MỚI BÀI VIẾT
-            <small>Preview</small>
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="{{asset('/admin')}}"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
-            <li><a href="{{route('admin.article.index')}}"><i class="fa fa-dashboard"></i> Quản lý bài viết</a></li>
-            <li class="active">Tạo mới bài viết</li>
-        </ol>
-    </section>
-
     <!-- Main content -->
     <section class="content">
 

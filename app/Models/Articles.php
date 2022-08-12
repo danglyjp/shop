@@ -10,7 +10,7 @@ class Articles extends Model
     use HasFactory;
 
     //tạo mối quan hệ bài viết và Danh mục
-    public function Article_Category(){
+    public function category(){
         return $this->belongsTo(Category::class, 'category_id');
     }
 }
