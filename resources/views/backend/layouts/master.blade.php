@@ -7,6 +7,12 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+ <!-- Favicons-->
+ <link rel="shortcut icon" href="{{url('frontend')}}/img/favicon.ico" type="image/x-icon">
+ <link rel="apple-touch-icon" type="image/x-icon" href="{{url('frontend')}}/img/apple-touch-icon-57x57-precomposed.png">
+ <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="{{url('frontend')}}/img/apple-touch-icon-72x72-precomposed.png">
+ <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="{{url('frontend')}}/img/apple-touch-icon-114x114-precomposed.png">
+ <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="{{url('frontend')}}/img/apple-touch-icon-144x144-precomposed.png">
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="{{asset('backend')}}/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->

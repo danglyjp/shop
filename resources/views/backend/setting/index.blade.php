@@ -1,15 +1,6 @@
 @extends('backend.layouts.master')
 
 @section('main')
-    <section class="content-header">
-        <h1>
-            Thông tin Website
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Thông tin Website</li>
-        </ol>
-    </section>
 
     <section class="content">
         <div class="row">

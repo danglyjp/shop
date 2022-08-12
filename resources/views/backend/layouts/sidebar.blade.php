@@ -24,7 +24,14 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">MAIN NAVIGATION</li>
+        {{-- <li class="header">MAIN NAVIGATION</li> --}}
+        <li>
+          <a href="{{ route('admin.dashboard') }}">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+              <span class="pull-right-container">
+              </span>
+          </a>
+      </li>
         <li class="treeview">
           <a href="{{route('admin.banner.index')}}">
             <i class="fa fa-picture-o" aria-hidden="true"></i> <span>Quản Lý Slider</span>
@@ -53,6 +60,22 @@
             </ul>
         </li>
 
+
+      <li>
+        <a href="{{route('admin.product.index') }}">
+            <i class="fa fa-th"></i> <span>Quản Lý Products </span>
+            <span class="pull-right-container">
+            </span>
+        </a>
+    </li>
+      <li>
+        <a href="{{route('admin.user.index') }}">
+            <i class="fa fa-users"></i> <span>Quản Lý User </span>
+            <span class="pull-right-container">
+            </span>
+        </a>
+    </li>
+
         <li class="treeview" style="height: auto;">
             <a href="#">
               <i class="fa fa-cog" aria-hidden="true"></i> <span>Quản Lý Hệ Thống</span>
@@ -62,6 +85,7 @@
             </a>
             <ul class="treeview-menu" style="display: none;">
                 <li><a href="{{route('admin.setting.index')}}"><i class="fa fa-circle-o"></i> Thay đổi Thông Tin</a></li>
+                <li><a href="{{route('admin.role.index') }}"><i class="fa fa-circle-o"></i> Quản Lý Role</a></li>
             </ul>
         </li>
 
