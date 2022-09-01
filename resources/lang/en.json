@@ -1,0 +1,26 @@
+{
+    "hello":"hello",
+    "home" : "Home",
+    "seach" : "Seach",
+    "comment" : "Comment",
+    "login" : "Login",
+    "logout" : "Logout",
+    "password" : "Password",
+    "mail" : "mail",
+    "address" : "address",
+    "cart" : "Cart",
+    "account" : "Account",
+    "category" : "category",
+    "article" : "Article",
+    "latest news" : "Latest News",
+    "product seach" : "Product Seach",
+    "contact" : "Contact",
+    "click here" : "Shop now",
+    "wishlist" : "Wishlist",
+    "privacy" : "Privacy",
+    "or" : "or",
+    "terms and conditions" : "Terms and conditions",
+    "there are no products in the cart" : "There are no products in the Cart",
+    "back to home page" : "Back to home page"
+    }
+    

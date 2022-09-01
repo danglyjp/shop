@@ -1,70 +1,26 @@
 <div class="container margin_60_35">
     <div class="main_title">
-        <h2>Latest News</h2>
-        <span>Blog</span>
+        <h2>{{ __('latest news') }}</h2>
+        <span>{{ __('latest news') }}</span>
         <p>Cum doctus civibus efficiantur in imperdiet deterruisset</p>
     </div>
     <div class="row">
+        @foreach($article as $key => $item)
         <div class="col-lg-6">
-            <a class="box_news" href="blog.html">
+            <a class="box_news" href="{{ route('article.detail',['slug'=> $item->slug ] ) }}">
                 <figure>
-                    <img src="frontend/img/blog-thumb-placeholder.jpg" data-src="frontend/img/blog-thumb-1.jpg" alt="" width="400" height="266" class="lazy">
+                <img src="@if($item->image && file_exists(public_path($item->image))){{ asset($item->image) }}@else{{ asset('upload/404.png') }}@endif" data-src="@if($item->image && file_exists(public_path($item->image))){{ asset($item->image) }}@else{{ asset('upload/404.png') }}@endif" alt="" width="400" height="266" class="lazy">
                     <figcaption><strong>28</strong>Dec</figcaption>
                 </figure>
                 <ul>
                     <li>by Mark Twain</li>
-                    <li>20.11.2017</li>
+                    <li>{{ date('d/m/Y', strtotime($item->created_at)) }}</li>
                 </ul>
-                <h4>Pri oportere scribentur eu</h4>
+                <h4>{{ $item->title }}</h4>
                 <p>Cu eum alia elit, usu in eius appareat, deleniti sapientem honestatis eos ex. In ius esse ullum vidisse....</p>
             </a>
         </div>
-        <!-- /box_news -->
-        <div class="col-lg-6">
-            <a class="box_news" href="blog.html">
-                <figure>
-                    <img src="frontend/img/blog-thumb-placeholder.jpg" data-src="frontend/img/blog-thumb-2.jpg" alt="" width="400" height="266" class="lazy">
-                    <figcaption><strong>28</strong>Dec</figcaption>
-                </figure>
-                <ul>
-                    <li>By Jhon Doe</li>
-                    <li>20.11.2017</li>
-                </ul>
-                <h4>Duo eius postea suscipit ad</h4>
-                <p>Cu eum alia elit, usu in eius appareat, deleniti sapientem honestatis eos ex. In ius esse ullum vidisse....</p>
-            </a>
-        </div>
-        <!-- /box_news -->
-        <div class="col-lg-6">
-            <a class="box_news" href="blog.html">
-                <figure>
-                    <img src="frontend/img/blog-thumb-placeholder.jpg" data-src="frontend/img/blog-thumb-3.jpg" alt="" width="400" height="266" class="lazy">
-                    <figcaption><strong>28</strong>Dec</figcaption>
-                </figure>
-                <ul>
-                    <li>By Luca Robinson</li>
-                    <li>20.11.2017</li>
-                </ul>
-                <h4>Elitr mandamus cu has</h4>
-                <p>Cu eum alia elit, usu in eius appareat, deleniti sapientem honestatis eos ex. In ius esse ullum vidisse....</p>
-            </a>
-        </div>
-        <!-- /box_news -->
-        <div class="col-lg-6">
-            <a class="box_news" href="blog.html">
-                <figure>
-                    <img src="frontend/img/blog-thumb-placeholder.jpg" data-src="frontend/img/blog-thumb-4.jpg" alt="" width="400" height="266" class="lazy">
-                    <figcaption><strong>28</strong>Dec</figcaption>
-                </figure>
-                <ul>
-                    <li>By Paula Rodrigez</li>
-                    <li>20.11.2017</li>
-                </ul>
-                <h4>Id est adhuc ignota delenit</h4>
-                <p>Cu eum alia elit, usu in eius appareat, deleniti sapientem honestatis eos ex. In ius esse ullum vidisse....</p>
-            </a>
-        </div>
-        <!-- /box_news -->
+        @endforeach
     </div>
     <!-- /row -->
 </div>

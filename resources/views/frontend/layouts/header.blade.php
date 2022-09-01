@@ -5,7 +5,7 @@
             <div class="row small-gutters">
                 <div class="col-xl-3 col-lg-3 d-lg-flex align-items-center">
                     <div id="logo">
-                        <a href="{{ config('app.url') }}"><img src="{{ $setting->image }}" alt="" width="100" height="35"></a>
+                        <a href="{{ config('app.url') }}"><img src="{{url($setting->image)}}" alt="" width="100" height="35"></a>
                     </div>
                 </div>
                 <nav class="col-xl-6 col-lg-7">
@@ -24,29 +24,56 @@
                         </div>
                         <ul>
                             <li>
-                                <a href="javascript:void(0);">Trang chủ</a>
+                                <a href="/">{{ __('home') }}</a>
                             </li>
                             <li class="submenu">
                                 <a href="javascript:void(0);" class="show-submenu">Extra Pages</a>
                                 <ul>
                                     <li><a href="/login">Đăng ký tài khoản</a></li>
                                     <li><a href="/track-order">Track Oders</a></li>
-                                    <li><a href="{{route('article.show')}}">Danh sách bài viết</a></li>
-                                    <li><a href="{{route('article.detail')}}">Chi bài viết</a></li>
+                                    <li><a href="{{route('article')}}">Danh sách bài viết</a></li>
+                                    <li><a href="/">Chi bài viết</a></li>
                                     <li><a href="/404">404 Page</a></li>
                                     <li><a href="/confirm">confirm</a></li>
-                                    <li><a href="{{route('cart.show')}}">Giỏ hàng</a></li>
+                                    <li><a href="{{route('cart.index')}}">Giỏ hàng</a></li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="{{route('article.show')}}">Article</a>
+                                <a href="{{route('article')}}">{{ __('article') }}</a>
                             </li>
                         </ul>
                     </div>
                     <!--/main-menu -->
                 </nav>
-                <div class="col-xl-3 col-lg-2 d-lg-flex align-items-center justify-content-end text-right">
+                {{-- <div class="col-xl-3 col-lg-2 d-lg-flex align-items-center justify-content-end text-right">
                     <a class="phone_top" href="tel://9438843343"><strong><span>Need Help?</span>+94 423-23-221</strong></a>
+                </div> --}}
+                <style>
+                .styled-select.lang-selector 
+                {
+                    background-color: white;
+                    width: auto;
+                }
+                .styled-select select 
+                {
+                color: #333 !important;
+                }
+                </style>
+                <div class="col-xl-3 col-lg-2 d-lg-flex align-items-center justify-content-end text-right">
+                    <div class="styled-select lang-selector">
+                        <select onchange="changeLanguage(this.value)" title="Change language">
+                            <option {{session()->has('locale')?(session()->get('locale')=='en'?'selected':''):''}} value="en">English</option>
+                            <option {{session()->has('locale')?(session()->get('locale')=='ja'?'selected':''):''}} value="ja">日本語</option>
+                            <option {{session()->has('locale')?(session()->get('locale')=='vi'?'selected':''):''}} value="vi">Tiếng Việt</option>
+                        </select>
+                        @push('scripts')
+                        <script>
+                            function changeLanguage(lang){
+                                window.location='{{ url('lang') }}/'+lang;
+                            }
+                            </script>
+                        @endpush
+                    </div>
                 </div>
             </div>
             <!-- /row -->
@@ -67,12 +94,18 @@
                                                 <span class="hamburger-inner"></span>
                                             </span>
                                         </span>
-                                        Categories
+                                    {{ __('category') }}
                                     </a>
                                 </span>
                                 <div id="menu">
                                     <ul>
-                                        <li><span><a href="#0">Collections</a></span>
+                                        @foreach ($categoryList as $item)
+                                        @if ($item->parent_id == 0)
+                                        <li><span><a href="{{ route('collections',['slug'=>$item->slug]) }}">{{ $item->name }}</a></span>
+                                        </li>
+                                        @endif
+                                        @endforeach
+                                        {{-- <li><span><a href="#0">Collections</a></span>
                                             <ul>
                                                 <li><a href="listing-grid-1-full.html">Trending</a></li>
                                                 <li><a href="listing-grid-2-full.html">Life style</a></li>
@@ -121,7 +154,7 @@
                                                 <li><a href="listing-row-4-sidebar-extended.html">For Boys</a></li>
                                                 <li><a href="listing-grid-1-full.html">For Girls</a></li>
                                             </ul>
-                                        </li>
+                                        </li> --}}
                                     </ul>
                                 </div>
                             </li>
@@ -129,16 +162,18 @@
                     </nav>
                 </div>
                 <div class="col-xl-6 col-lg-7 col-md-6 d-none d-md-block">
+                    <form action="{{ route('search') }}" method="get">
                     <div class="custom-search-input">
-                        <input type="text" placeholder="Search over 10.000 products">
+                        <input name="keyword" type="text" placeholder="{{ __('product seach') }}">
                         <button type="submit"><i class="header-icon_search_custom"></i></button>
                     </div>
+                    </form>
                 </div>
                 <div class="col-xl-3 col-lg-2 col-md-3">
                     <ul class="top_tools">
                         <li>
-                            <div class="dropdown dropdown-cart">
-                                <a href="/cart" class="cart_bt"><strong>2</strong></a>
+                            <div onclick="location.href='{{route('cart.index')}}';" class="dropdown dropdown-cart">
+                                <a href="{{route('cart.index')}}" class="cart_bt"><strong>2</strong></a>
                                 <div class="dropdown-menu">
                                     <ul>
                                         <li>
@@ -158,17 +193,19 @@
                                     </ul>
                                     <div class="total_drop">
                                         <div class="clearfix"><strong>Total</strong><span>$200.00</span></div>
-                                        <a href="/cart" class="btn_1 outline">View Cart</a><a href="checkout.html" class="btn_1">Checkout</a>
+                                        <a href="{{route('cart.index')}}" class="btn_1 outline">View Cart</a><a href="{{route('checkout.index')}}" class="btn_1">Checkout</a>
                                     </div>
                                 </div>
                             </div>
                             <!-- /dropdown-cart-->
                         </li>
                         <li>
-                            <a href="#0" class="wishlist"><span>Wishlist</span></a>
+                            <a href="#0" class="wishlist"><span>{{ __('wishlist') }}</span></a>
                         </li>
                         <li>
-                            {{-- <div class="dropdown dropdown-access">
+                            @if (Route::has('login'))
+                                @auth
+                                <div class="dropdown dropdown-access">
                                 <a href="account.html" class="access_link"><span>Account</span></a>
                                 <div class="dropdown-menu">
                                     <a href="account.html" class="btn_1">Sign In or Sign Up</a>
@@ -187,12 +224,16 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </div> --}}
-                            <!-- /dropdown-access-->
-                            <a href="#sign-in-dialog" id="sign-in" class="access_link"><span>Account</span></a>
+                                </div>
+                             <!-- /dropdown-access-->
+                                @endauth
+            
+                            @endif
+                            <a href="#sign-in-dialog" id="sign-in" class="access_link"><span>{{ __('account') }}</span></a>
+
                         </li>
                         <li>
-                            <a href="javascript:void(0);" class="btn_search_mob"><span>Search</span></a>
+                            <a href="javascript:void(0);" class="btn_search_mob"><span>{{ __('search') }}</span></a>
                         </li>
                         <li>
                             <a href="#menu" class="btn_cat_mob">
@@ -201,7 +242,7 @@
                                         <div class="hamburger-inner"></div>
                                     </div>
                                 </div>
-                                Categories
+                                {{ __('category') }}
                             </a>
                         </li>
                     </ul>

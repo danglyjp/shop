@@ -4,7 +4,10 @@
 <link href="{{url('frontend')}}/css/blog.css" rel="stylesheet">
 @endsection
 
-@section('title','blog page')
+@section('title')
+{{ $article->title }}
+@endsection
+
 @section('description')
 
 @endsection
@@ -16,9 +19,9 @@
         <div class="page_header">
             <div class="breadcrumbs">
                 <ul>
-                    <li><a href="#">Home</a></li>
+                    <li><a href="#">{{ __('home') }}</a></li>
                     <li><a href="#">Category</a></li>
-                    <li>Page active</li>
+                    <li>{{ $article->title }}</li>
                 </ul>
             </div>
         </div>
@@ -26,24 +29,18 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="singlepost">
-                    <figure><img alt="" class="img-fluid" src="{{url('frontend')}}/img/blog-single.jpg"></figure>
-                    <h1>Ei pro alia placerat theophrastus</h1>
+                    <figure><img alt="" class="img-fluid" src="@if($article->image && file_exists(public_path($article->image))){{ asset($article->image) }}@else{{ asset('upload/404.png') }}@endif"></figure>
+                    <h1>{{ $article->title }}</h1>
                     <div class="postmeta">
                         <ul>
                             <li><a href="#"><i class="ti-folder"></i> Category</a></li>
-                            <li><i class="ti-calendar"></i> 23/12/2015</li>
+                            <li><i class="ti-calendar"></i> {{ date('d/m/Y', strtotime($article->created_at)) }}</li>
                             <li><a href="#"><i class="ti-user"></i> Admin</a></li>
                             <li><a href="#"><i class="ti-comment"></i> (14) Comments</a></li>
                         </ul>
                     </div>
                     <!-- /post meta -->
-                    <div class="post-content">
-                        <div class="dropcaps">
-                            <p>Aorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                        </div>
-
-                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
-                    </div>
+                    <div class="post-content">{!! $article->description !!}</div>
                     <!-- /post -->
                 </div>
                 <!-- /single-post -->
@@ -163,28 +160,16 @@
                     <div class="widget-title">
                         <h4>Latest Post</h4>
                     </div>
-                    <ul class="comments-list">
+                    <ul class="comments-list"> 
+                        @foreach($latestPost as $key => $item)
                         <li>
                             <div class="alignleft">
-                                <a href="#0"><img src="{{url('frontend')}}/img/blog-5.jpg" alt=""></a>
+                                <a href="#0"><img src="@if($item->image && file_exists(public_path($item->image))){{ asset($item->image) }}@else{{ asset('upload/404.png') }}@endif" alt=""></a>
                             </div>
                             <small>Category - 11.08.2016</small>
-                            <h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
+                            <h3><a href="#" title="">{{ $item->title }}</a></h3>
                         </li>
-                        <li>
-                            <div class="alignleft">
-                                <a href="#0"><img src="{{url('frontend')}}/img/blog-6.jpg" alt=""></a>
-                            </div>
-                            <small>Category - 11.08.2016</small>
-                            <h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
-                        </li>
-                        <li>
-                            <div class="alignleft">
-                                <a href="#0"><img src="{{url('frontend')}}/img/blog-4.jpg" alt=""></a>
-                            </div>
-                            <small>Category - 11.08.2016</small>
-                            <h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
                 <!-- /widget -->

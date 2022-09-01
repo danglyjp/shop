@@ -175,6 +175,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Laravel\Scout\ScoutServiceProvider::class,
+        Darryldecode\Cart\CartServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
+        Elasticquent\ElasticquentServiceProvider::class,
 
     ],
 
@@ -228,6 +232,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Es' => Elasticquent\ElasticquentElasticsearchFacade::class,
+        'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
 
     ],
 

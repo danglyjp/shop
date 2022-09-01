@@ -4,6 +4,22 @@
 @section('main')
     <section class="content">
         <div class="row">
+            <div class="col-md-6">
+                @if ($errors->any())
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h4><i class="icon fa fa-warning"></i> Lỗi !</h4>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+            </div>
+        </div>
+
+        <div class="row">
             <!-- left column -->
             <div class="col-md-12">
                 <!-- general form elements -->

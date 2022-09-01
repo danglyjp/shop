@@ -178,7 +178,10 @@
                           <a href="{{ route('admin.user.edit',['user' => $user->id]) }}" class="btn btn-default btn-flat">Edit Profile</a>
                       </div>
                       <div class="pull-right">
-                          <a href="{{ route('admin.logout') }}" class="btn btn-default btn-flat">Đăng xuất</a>
+                        <form action="{{ route('admin.logout') }}" method="POST">
+                            @csrf
+                          <button type="submit" class="btn btn-default btn-flat">Đăng xuất</button>
+                        </form>
                       </div>
                   </li>
               </ul>

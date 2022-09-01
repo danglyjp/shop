@@ -4,7 +4,7 @@
 <link href="{{url('frontend')}}/css/blog.css" rel="stylesheet">
 @endsection
 
-@section('title','home page')
+@section('title','Danh sách Bài viết')
 @section('description')
 
 @endsection
@@ -34,16 +34,17 @@
                 </div>
                 <!-- /widget -->
                 <div class="row">
+                    @foreach($article as $key => $item)
                     <div class="col-md-6">
                         <article class="blog">
                             <figure>
-                                <a href="blog-post.html"><img src="{{url('frontend')}}/img/blog-1.jpg" alt="">
+                                <a href="{{ route('article.detail',['slug'=> $item->slug ] ) }}"><img src="@if($item->image && file_exists(public_path($item->image))){{ asset($item->image) }}@else{{ asset('upload/404.png') }}@endif" alt="">
                                     <div class="preview"><span>Read more</span></div>
                                 </a>
                             </figure>
                             <div class="post_info">
-                                <small>Category - 20 Nov. 2017</small>
-                                <h2><a href="blog-post.html">Ea exerci option hendrerit</a></h2>
+                                <small>{{ date('d/m/Y', strtotime($item->created_at)) }}</small>
+                                <h2><a href="{{ route('article.detail',['slug'=> $item->slug ] ) }}">{{ $item->title }}</a></h2>
                                 <p>Quodsi sanctus pro eu, ne audire scripserit quo. Vel an enim offendit salutandi, in eos quod omnes epicurei, ex veri qualisque scriptorem mei.</p>
                                 <ul>
                                     <li>
@@ -55,138 +56,12 @@
                         </article>
                         <!-- /article -->
                     </div>
-                    <!-- /col -->
-                    <div class="col-md-6">
-                        <article class="blog">
-                            <figure>
-                                <a href="blog-post.html"><img src="{{url('frontend')}}/img/blog-2.jpg" alt="">
-                                    <div class="preview"><span>Read more</span></div>
-                                </a>
-                            </figure>
-                            <div class="post_info">
-                                <small>Category - 20 Nov. 2017</small>
-                                <h2><a href="blog-post.html">At usu sale dolorum offendit</a></h2>
-                                <p>Quodsi sanctus pro eu, ne audire scripserit quo. Vel an enim offendit salutandi, in eos quod omnes epicurei, ex veri qualisque scriptorem mei.</p>
-                                <ul>
-                                    <li>
-                                        <div class="thumb"><img src="{{url('frontend')}}/img/avatar.jpg" alt=""></div> Admin
-                                    </li>
-                                    <li><i class="ti-comment"></i>20</li>
-                                </ul>
-                            </div>
-                        </article>
-                        <!-- /article -->
-                    </div>
-                    <!-- /col -->
-                    <div class="col-md-6">
-                        <article class="blog">
-                            <figure>
-                                <a href="blog-post.html"><img src="{{url('frontend')}}/img/blog-3.jpg" alt="">
-                                    <div class="preview"><span>Read more</span></div>
-                                </a>
-                            </figure>
-                            <div class="post_info">
-                                <small>Category - 20 Nov. 2017</small>
-                                <h2><a href="blog-post.html">Iusto nominavi petentium in</a></h2>
-                                <p>Quodsi sanctus pro eu, ne audire scripserit quo. Vel an enim offendit salutandi, in eos quod omnes epicurei, ex veri qualisque scriptorem mei.</p>
-                                <ul>
-                                    <li>
-                                        <div class="thumb"><img src="{{url('frontend')}}/img/avatar.jpg" alt=""></div> Admin
-                                    </li>
-                                    <li><i class="ti-comment"></i>20</li>
-                                </ul>
-                            </div>
-                        </article>
-                        <!-- /article -->
-                    </div>
-                    <!-- /col -->
-                    <div class="col-md-6">
-                        <article class="blog">
-                            <figure>
-                                <a href="blog-post.html"><img src="{{url('frontend')}}/img/blog-4.jpg" alt="">
-                                    <div class="preview"><span>Read more</span></div>
-                                </a>
-                            </figure>
-                            <div class="post_info">
-                                <small>Category - 20 Nov. 2017</small>
-                                <h2><a href="blog-post.html">Assueverit concludaturque quo</a></h2>
-                                <p>Quodsi sanctus pro eu, ne audire scripserit quo. Vel an enim offendit salutandi, in eos quod omnes epicurei, ex veri qualisque scriptorem mei.</p>
-                                <ul>
-                                    <li>
-                                        <div class="thumb"><img src="{{url('frontend')}}/img/avatar.jpg" alt=""></div> Admin
-                                    </li>
-                                    <li><i class="ti-comment"></i>20</li>
-                                </ul>
-                            </div>
-                        </article>
-                        <!-- /article -->
-                    </div>
-                    <!-- /col -->
-                    <div class="col-md-6">
-                        <article class="blog">
-                            <figure>
-                                <a href="blog-post.html"><img src="{{url('frontend')}}/img/blog-5.jpg" alt="">
-                                    <div class="preview"><span>Read more</span></div>
-                                </a>
-                            </figure>
-                            <div class="post_info">
-                                <small>Category - 20 Nov. 2017</small>
-                                <h2><a href="blog-post.html">Nec nihil menandri appellantur</a></h2>
-                                <p>Quodsi sanctus pro eu, ne audire scripserit quo. Vel an enim offendit salutandi, in eos quod omnes epicurei, ex veri qualisque scriptorem mei.</p>
-                                <ul>
-                                    <li>
-                                        <div class="thumb"><img src="{{url('frontend')}}/img/avatar.jpg" alt=""></div> Admin
-                                    </li>
-                                    <li><i class="ti-comment"></i>20</li>
-                                </ul>
-                            </div>
-                        </article>
-                        <!-- /article -->
-                    </div>
-                    <!-- /col -->
-                    <div class="col-md-6">
-                        <article class="blog">
-                            <figure>
-                                <a href="blog-post.html"><img src="{{url('frontend')}}/img/blog-6.jpg" alt="">
-                                    <div class="preview"><span>Read more</span></div>
-                                </a>
-                            </figure>
-                            <div class="post_info">
-                                <small>Category - 20 Nov. 2017</small>
-                                <h2><a href="blog-post.html">Te congue everti his salutandi</a></h2>
-                                <p>Quodsi sanctus pro eu, ne audire scripserit quo. Vel an enim offendit salutandi, in eos quod omnes epicurei, ex veri qualisque scriptorem mei.</p>
-                                <ul>
-                                    <li>
-                                        <div class="thumb"><img src="{{url('frontend')}}/img/avatar.jpg" alt=""></div> Admin
-                                    </li>
-                                    <li><i class="ti-comment"></i>20</li>
-                                </ul>
-                            </div>
-                        </article>
-                        <!-- /article -->
-                    </div>
+                    @endforeach
                     <!-- /col -->
                 </div>
                 <!-- /row -->
 
-                <div class="pagination__wrapper no_border add_bottom_30">
-                    <ul class="pagination">
-                        <li><a href="#0" class="prev" title="previous page">&#10094;</a></li>
-                        <li>
-                            <a href="#0" class="active">1</a>
-                        </li>
-                        <li>
-                            <a href="#0">2</a>
-                        </li>
-                        <li>
-                            <a href="#0">3</a>
-                        </li>
-                        <li>
-                            <a href="#0">4</a>
-                        </li>
-                        <li><a href="#0" class="next" title="next page">&#10095;</a></li>
-                    </ul>
-                </div>
+                {{ $article->links('frontend.page.custom-pagination') }}
                 <!-- /pagination -->
 
             </div>

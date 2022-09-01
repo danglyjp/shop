@@ -1,19 +1,19 @@
 <div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
     <div class="modal_header">
-        <h3>{{ $logintxt }}</h3>
+        <h3>{{ __('login') }}</h3>
     </div>
     <form>
         <div class="sign-in-wrapper">
             <a href="#0" class="social_bt facebook">Đăng nhập bằng Facebook</a>
             <a href="#0" class="social_bt google">Đăng nhập bằng Google</a>
-            <div class="divider"><span>hoặc</span></div>
+            <div class="divider"><span>{{ __('or') }}</span></div>
             <div class="form-group">
-                <label>Email</label>
+                <label>{{ __('mail') }}</label>
                 <input type="email" class="form-control" name="email" id="email">
                 <i class="ti-email"></i>
             </div>
             <div class="form-group">
-                <label>Mật khẩu</label>
+                <label>{{ __('password') }}</label>
                 <input type="password" class="form-control" name="password" id="password" value="">
                 <i class="ti-lock"></i>
             </div>
@@ -27,7 +27,7 @@
                 <div class="float-right mt-1"><a id="forgot" href="javascript:void(0);">Forgot Password?</a></div>
             </div>
             <div class="text-center">
-                <input type="submit" value="{{ $logintxt }}" class="btn_1 full-width">
+                <input type="submit" value="{{ __('login') }}" class="btn_1 full-width">
                 Don’t have an account? <a href="account.html">Đăng ký tài khoản</a>
             </div>
             <div id="forgot_pw">

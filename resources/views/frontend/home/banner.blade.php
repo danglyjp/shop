@@ -1,29 +1,14 @@
+
 <ul id="banners_grid" class="clearfix">
+    @foreach($categoryItem as $key => $item)
     <li>
-        <a href="#0" class="img_container">
-            <img src="frontend/img/banners_cat_placeholder.jpg" data-src="frontend/img/banner_1.jpg" alt="" class="lazy">
+        <a href="{{ route('collections',['slug'=> $item->slug ] ) }}" class="img_container">
+            <img src="@if($item->image && file_exists(public_path($item->image))){{ asset($item->image) }}@else{{ asset('upload/404.png') }}@endif" data-src="@if($item->image && file_exists(public_path($item->image))){{ asset($item->image) }}@else{{ asset('upload/404.png') }}@endif" alt="" class="lazy">
             <div class="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
-                <h3>Men's Collection</h3>
-                <div><span class="btn_1">Shop Now</span></div>
+                <h3>{{ $item->name }}</h3>
+                <div><span class="btn_1">{{ __('click here') }}</span></div>
             </div>
         </a>
     </li>
-    <li>
-        <a href="#0" class="img_container">
-            <img src="frontend/img/banners_cat_placeholder.jpg" data-src="frontend/img/banner_2.jpg" alt="" class="lazy">
-            <div class="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
-                <h3>Womens's Collection</h3>
-                <div><span class="btn_1">Shop Now</span></div>
-            </div>
-        </a>
-    </li>
-    <li>
-        <a href="#0" class="img_container">
-            <img src="frontend/img/banners_cat_placeholder.jpg" data-src="frontend/img/banner_3.jpg" alt="" class="lazy">
-            <div class="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
-                <h3>Kids's Collection</h3>
-                <div><span class="btn_1">Shop Now</span></div>
-            </div>
-        </a>
-    </li>
+    @endforeach
 </ul>

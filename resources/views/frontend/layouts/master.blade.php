@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="@yield('description')">
     <meta name="author" content="Ansonika">
@@ -45,12 +46,9 @@
 	
 	<div id="toTop"></div><!-- Back to top button -->
     <x-login logintxt="Đăng nhập"/>
-	<!-- COMMON SCRIPTS -->
     <script src="{{url('frontend')}}/js/common_scripts.min.js"></script>
     <script src="{{url('frontend')}}/js/main.js"></script>
-	
-	<!-- SPECIFIC SCRIPTS -->
 	<script src="{{url('frontend')}}/js/carousel-home.min.js"></script>
-
+    @stack('scripts')
 </body>
 </html>

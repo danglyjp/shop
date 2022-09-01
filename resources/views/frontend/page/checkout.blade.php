@@ -4,7 +4,7 @@
 <link href="{{url('frontend')}}/css/checkout.css" rel="stylesheet">
 @endsection
 
-@section('title','home page')
+@section('title','Giỏ hàng')
 @section('description')
 
 @endsection
@@ -47,32 +47,43 @@
 								<input type="password" class="form-control" placeholder="Password">
 							</div>
 							<hr>
-							<div class="row no-gutters">
-								<div class="col-6 form-group pr-1">
-									<input type="text" class="form-control" placeholder="Name">
-								</div>
-								<div class="col-6 form-group pl-1">
-									<input type="text" class="form-control" placeholder="Last Name">
-								</div>
-							</div>
-							<!-- /row -->
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Full Address">
+								<input type="text" class="form-control" placeholder="Họ và Tên">
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Số điện thoại">
+							</div>
+
+							<div class="row no-gutters">
+								<div class="col-md-12 form-group">
+									<div class="custom-select-form">
+										<select class="wide add_bottom_15" name="" id="">
+											<option value="" selected>--Chọn Tỉnh/Thành phố--</option>
+											<option value="Europe">Europe</option>
+											<option value="United states">United states</option>
+											<option value="Asia">Asia</option>
+										</select>
+									</div>
+								</div>
 							</div>
 							<div class="row no-gutters">
-								<div class="col-6 form-group pr-1">
-									<input type="text" class="form-control" placeholder="City">
-								</div>
-								<div class="col-6 form-group pl-1">
-									<input type="text" class="form-control" placeholder="Postal code">
+								<div class="col-md-12 form-group">
+									<div class="custom-select-form">
+										<select class="wide add_bottom_15" name="" id="">
+											<option value="" selected>--Chọn Quận/Huyện--</option>
+											<option value="Europe">Europe</option>
+											<option value="United states">United states</option>
+											<option value="Asia">Asia</option>
+										</select>
+									</div>
 								</div>
 							</div>
 							<!-- /row -->
 							<div class="row no-gutters">
 								<div class="col-md-12 form-group">
 									<div class="custom-select-form">
-										<select class="wide add_bottom_15" name="country" id="country">
-											<option value="" selected>Country</option>
+										<select class="wide add_bottom_15" name="" id="">
+											<option value="" selected>--Chọn Phường/Xã--</option>
 											<option value="Europe">Europe</option>
 											<option value="United states">United states</option>
 											<option value="Asia">Asia</option>
@@ -82,7 +93,7 @@
 							</div>
 							<!-- /row -->
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Telephone">
+								<input type="text" class="form-control" placeholder="Số nhà/số phòng">
 							</div>
 							<hr>
 							<div class="form-group">
@@ -126,9 +137,6 @@
 								</div>
 							</div>
 							<!-- /row -->
-							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Telephone">
-							</div>
 							</div>
 							<!-- /other_addr_c -->
 							<hr>
