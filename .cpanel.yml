@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/ohayojap/ohayo.tokyo/
+    - /bin/cp -R * $DEPLOYPATH
