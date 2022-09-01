@@ -27,7 +27,7 @@
                                 <a href="/">{{ __('home') }}</a>
                             </li>
                             <li class="submenu">
-                                <a href="javascript:void(0);" class="show-submenu">Extra Pages</a>
+                                <a href="javascript:void(0);" class="show-submenu">{{ __('home') }}</a>
                                 <ul>
                                     <li><a href="/login">Đăng ký tài khoản</a></li>
                                     <li><a href="/track-order">Track Oders</a></li>
