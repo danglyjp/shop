@@ -5,7 +5,6 @@
 /vendor
 /guide
 /docker
-.env
 .env.backup
 .phpunit.result.cache
 Homestead.json
